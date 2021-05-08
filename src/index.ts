@@ -9,7 +9,7 @@ const Client = new DiscordClient();
 
 Client.once('ready', async () => {
     console.info(`Logged in as ${Client.user ? Client.user.tag : 'a bot'}`);
-    await Client.user!.setPresence({
+    Client.user!.setPresence({
         activity: {
             type: 'PLAYING',
             name: 'ESO on OnlyTrials'
@@ -25,6 +25,7 @@ Client.once('ready', async () => {
                     const adminChannel = await Client.channels.fetch('840387782215204894');
                     if (adminChannel && adminChannel.isText()) {
                         adminChannel.send(`<@&840384407415554068> - ${user.toString()} is requesting a **${reaction.emoji.name}** assessment!`);
+                        user.send(`Your **${reaction.emoji.name}** assessment request has been made!`);
                     }
                 });
             }
