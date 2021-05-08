@@ -9,6 +9,12 @@ const Client = new DiscordClient();
 
 Client.once('ready', async () => {
     console.info(`Logged in as ${Client.user ? Client.user.tag : 'a bot'}`);
+    await Client.user!.setPresence({
+        activity: {
+            type: 'PLAYING',
+            name: 'ESO on OnlyTrials'
+        }
+    });
     try {
         const channel = await Client.channels.fetch('840397677892337705');
         if (channel && channel.isText()) {
