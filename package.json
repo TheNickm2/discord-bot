@@ -1,0 +1,31 @@
+{
+    "name": "discord-bot",
+    "version": "1.0.0",
+    "description": "A Discord Trial bot",
+    "main": "index.js",
+    "repository": "git@github.com:TheNickm2/discord-bot.git",
+    "author": "Nick <25287325+TheNickm2@users.noreply.github.com>",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "discord.js": "^12.5.3"
+    },
+    "devDependencies": {
+        "typescript": "^4.2.4",
+        "@types/node": "^15.0.2",
+        "dotenv": "^9.0.0",
+        "prettier": "2.2.1",
+        "rimraf": "^3.0.2",
+        "ts-node-dev": "^1.1.6",
+        "yarn": "^1.22.10"
+    },
+    "scripts": {
+        "format-fix": "prettier --write src/**/*",
+        "format-check": "prettier --check src/**/*",
+        "format": "yarn run format-check",
+        "dev": "ts-node-dev src/index.ts",
+        "start": "yarn run build && node dist/index.js",
+        "prebuild": "rimraf dist",
+        "build": "tsc"
+    }
+}
