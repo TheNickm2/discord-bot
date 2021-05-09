@@ -17,7 +17,7 @@ Client.once('ready', async () => {
     Client.user!.setPresence({
         activity: {
             type: 'PLAYING',
-            name: 'ESO on OnlyTrials'
+            name: 'ESO, running Trials :D'
         }
     });
     try {
