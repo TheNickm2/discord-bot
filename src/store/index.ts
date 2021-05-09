@@ -1,6 +1,6 @@
 interface GlobalStore {
-    tankAssessmentUsers: String[],
-    healerAssessmentUsers: String[]
+    tankAssessmentUsers: String[];
+    healerAssessmentUsers: String[];
 }
 
 export const GlobalStore = {

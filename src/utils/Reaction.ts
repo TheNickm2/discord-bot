@@ -15,22 +15,32 @@ export function watchReactions(
     const reactionCollector = message.createReactionCollector(filter);
     reactionCollector.on('collect', (reaction, user) => {
         reaction.users.remove(user);
-        if (reaction.emoji.name === 'tank' && GlobalStore.tankAssessmentUsers.indexOf(user.tag) === -1) {
+        if (
+            reaction.emoji.name === 'tank' &&
+            GlobalStore.tankAssessmentUsers.indexOf(user.tag) === -1
+        ) {
             GlobalStore.tankAssessmentUsers.push(user.tag);
             setTimeout(() => {
-                GlobalStore.tankAssessmentUsers = GlobalStore.tankAssessmentUsers.filter((element) => {
-                    return element !== user.tag;
-                });
-            }, 1000*60*60);
+                GlobalStore.tankAssessmentUsers = GlobalStore.tankAssessmentUsers.filter(
+                    (element) => {
+                        return element !== user.tag;
+                    }
+                );
+            }, 1000 * 60 * 60);
             callback(reaction, user);
         }
-        if (reaction.emoji.name === 'healer' && GlobalStore.healerAssessmentUsers.indexOf(user.tag) === -1) {
+        if (
+            reaction.emoji.name === 'healer' &&
+            GlobalStore.healerAssessmentUsers.indexOf(user.tag) === -1
+        ) {
             GlobalStore.healerAssessmentUsers.push(user.tag);
             setTimeout(() => {
-                GlobalStore.healerAssessmentUsers = GlobalStore.healerAssessmentUsers.filter((element) => {
-                    return element !== user.tag;
-                });
-            }, 1000*60*60);
+                GlobalStore.healerAssessmentUsers = GlobalStore.healerAssessmentUsers.filter(
+                    (element) => {
+                        return element !== user.tag;
+                    }
+                );
+            }, 1000 * 60 * 60);
             callback(reaction, user);
         }
     });
