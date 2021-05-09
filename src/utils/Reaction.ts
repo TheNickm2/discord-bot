@@ -14,7 +14,6 @@ export function watchReactions(
     };
     const reactionCollector = message.createReactionCollector(filter);
     reactionCollector.on('collect', (reaction, user) => {
-        reaction.users.remove(user);
         if (
             reaction.emoji.name === 'tank' &&
             GlobalStore.tankAssessmentUsers.indexOf(user.tag) === -1

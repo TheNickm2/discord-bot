@@ -26,9 +26,6 @@ Client.once('ready', async () => {
             await channel.messages.fetch();
             const msg = channel.messages.cache.get('840693870827405404');
             if (msg) {
-                msg.react('840693821301588029').then(() => {
-                    msg.react('840693821259251732');
-                });
                 ReactionManager.watchReactions(
                     msg,
                     Client,
