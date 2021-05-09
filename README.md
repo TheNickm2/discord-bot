@@ -1,3 +1,3 @@
-# discord-bot
+# Trial Bot
 
-discord-bot
+General purpose bot for Trial-focused ESO guild.

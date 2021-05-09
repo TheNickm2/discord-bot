@@ -6,7 +6,10 @@ export function watchReactions(
     callback: Function
 ): void {
     const filter = (reaction: Discord.MessageReaction, user: Discord.User) => {
-        return ['tank', 'healer'].includes(reaction.emoji.name) && user !== client.user;
+        return (
+            ['tank', 'healer'].includes(reaction.emoji.name) &&
+            user !== client.user
+        );
     };
     const reactionCollector = message.createReactionCollector(filter);
     reactionCollector.on('collect', (reaction, user) => {
