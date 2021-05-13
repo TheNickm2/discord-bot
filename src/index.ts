@@ -40,7 +40,7 @@ Client.once('ready', async () => {
                                 }** assessment!`
                             );
                             user.send(
-                                `Your **${reaction.emoji.name}** assessment request has been made in Kynareth's Garden!`
+                                `Your **${reaction.emoji.name.toUpperCase()}** assessment request has been made in **Kynareth's Garden**!`
                             );
                         }
                     }
