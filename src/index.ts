@@ -11,13 +11,13 @@ import * as Database from './database/db';
 
 dotenv.config();
 
-Database.InitializeDatabase(
-    `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
-);
-
 const Client = new DiscordClient();
 
 Client.once('ready', async () => {
+    await Database.InitializeDatabase(
+        `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
+    );
+
     console.info(`Logged in as ${Client.user ? Client.user.tag : 'a bot'}`);
     Client.user!.setPresence({
         activity: {
@@ -47,7 +47,7 @@ Client.once('ready', async () => {
                                 }** assessment!`
                             );
                             user.send(
-                                `Your **${reaction.emoji.name.toUpperCase()}** assessment request has been made in **Kynareth's Garden**!`
+                                `Your **${reaction.emoji.name.toUpperCase()}** assessment request has been made in **${guild.name}**!`
                             );
                         }
                     }

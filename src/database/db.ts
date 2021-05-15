@@ -59,3 +59,30 @@ export function CreateOrUpdateGuildmate(
         return reject(null);
     });
 }
+
+export function DeleteGuildmate (userId: string): Promise<DeleteCode> {
+    return new Promise(async (resolve) => {
+        try {
+            const result = await Guildmate.findOne({
+                discordId: userId
+            });
+            if (result) {
+                await result.delete();
+                return resolve(0);
+            }
+            else {
+                return resolve(1);
+            }
+        }
+        catch (err) {
+            if (err) console.error(err.message);
+            return resolve(2);
+        }
+    });
+}
+
+export enum DeleteCode {
+    Success = 0,
+    UserNotFound = 1,
+    DatabaseFailure = 2
+}
