@@ -62,7 +62,7 @@ export function watchReactions(
                 console.error(error);
             }
         }
-        
+
         // At this point, the user does not have the tank/healer role nor has their request been found in the database.
         const userData: any = {
             discordId: user.id,
@@ -72,15 +72,17 @@ export function watchReactions(
             userData.assessments = assessmentUser.assessments;
         }
         if (reaction.emoji.name === 'tank') userData.assessments.tank = true;
-        else if (reaction.emoji.name === 'healer') userData.assessments.heal = true;
+        else if (reaction.emoji.name === 'healer')
+            userData.assessments.heal = true;
         const success = Database.CreateOrUpdateGuildmate(userData);
         if (success) {
             callback(reaction, user);
-        }
-        else {
+        } else {
             const nick = await client.users.fetch('441377078634610688');
             if (nick) {
-                nick.send('An error occurred in Reaction.ts on line 73 - database creation/update unsuccessful.');
+                nick.send(
+                    'An error occurred in Reaction.ts on line 73 - database creation/update unsuccessful.'
+                );
             }
         }
     });

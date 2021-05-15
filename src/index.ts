@@ -47,7 +47,9 @@ Client.once('ready', async () => {
                                 }** assessment!`
                             );
                             user.send(
-                                `Your **${reaction.emoji.name.toUpperCase()}** assessment request has been made in **${guild.name}**!`
+                                `Your **${reaction.emoji.name.toUpperCase()}** assessment request has been made in **${
+                                    guild.name
+                                }**!`
                             );
                         }
                     }
