@@ -78,7 +78,7 @@ export function watchReactions(
             callback(reaction, user);
         }
         else {
-            const nick = await client.users.fetch('');
+            const nick = await client.users.fetch('441377078634610688');
             if (nick) {
                 nick.send('An error occurred in Reaction.ts on line 73 - database creation/update unsuccessful.');
             }
