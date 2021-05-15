@@ -7,8 +7,13 @@ import {
 } from 'discord.js';
 import ParseCommand from './commands/Commands';
 import * as ReactionManager from './utils/Reaction';
+import * as Database from './database/db';
 
 dotenv.config();
+
+Database.InitializeDatabase(
+    `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
+);
 
 const Client = new DiscordClient();
 
@@ -17,11 +22,12 @@ Client.once('ready', async () => {
     Client.user!.setPresence({
         activity: {
             type: 'PLAYING',
-            name: 'ESO, running Trials :D'
+            name: "ESO in Kynareth's Garden"
         }
     });
     try {
         const channel = await Client.channels.fetch('840397677892337705');
+        const guild = await Client.guilds.fetch('839564201855811624');
         if (channel && channel.isText()) {
             await channel.messages.fetch();
             const msg = channel.messages.cache.get('840693870827405404');
@@ -29,6 +35,7 @@ Client.once('ready', async () => {
                 ReactionManager.watchReactions(
                     msg,
                     Client,
+                    guild,
                     async (reaction: MessageReaction, user: User) => {
                         const adminChannel = await Client.channels.fetch(
                             '840387782215204894'
