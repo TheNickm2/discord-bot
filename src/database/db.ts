@@ -22,11 +22,13 @@ const Guildmate: Mongoose.Model<IGuildmate> = Mongoose.model(
     GuildmateSchema
 );
 
-export async function InitializeDatabase(connectionString: string) {
-    await Mongoose.connect(connectionString, {
+export function InitializeDatabase(connectionString: string) {
+    Mongoose.connect(connectionString, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false
+    }).catch(err => {
+        if (err) console.error(err.message);
     });
 }
 
